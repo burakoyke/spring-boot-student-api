@@ -18,4 +18,27 @@ public class StudentService {
 		return studentRepository.getAllStudents();
 	}
 
+	public Student getStudentById(int id) {
+		
+		return studentRepository.getStudentById(id);
+	}
+
+	public List<Student> getStudentByName(String studentName) {
+		// TODO Auto-generated method stub
+		return studentRepository.getStudentByName(studentName);
+	}
+
+	public List<Student> getStudentByLastName(String studentLastName) {
+		return studentRepository.getStudentByLastName(studentLastName);
+	}
+
+	public Student getStudentByNo(int studentNo) {
+		return studentRepository.getStudentByNo(studentNo);
+	}
+
+	public List<Student> getStudentWithParams(Integer id, String studentName, String studentLastName, Integer studentNo) {
+		
+		return studentRepository.getStudentWithParams(id,studentName,studentLastName,studentNo);
+	}
+
 }

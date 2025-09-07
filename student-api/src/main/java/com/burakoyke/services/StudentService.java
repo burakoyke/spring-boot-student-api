@@ -41,4 +41,22 @@ public class StudentService {
 		return studentRepository.getStudentWithParams(id,studentName,studentLastName,studentNo);
 	}
 
+	public Student saveStudent(Student student) {
+		
+		return studentRepository.saveStudent(student);
+	}
+
+	public Boolean deteleStudentById(Integer id) {
+		return studentRepository.deteleStudentById(id);
+	}
+
+	public Boolean deteleStudentByStudentNo(Integer studentNo) {
+		// TODO Auto-generated method stub
+		return studentRepository.deteleStudentByStudentNo(studentNo);
+	}
+
+	
+
+
+
 }

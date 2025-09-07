@@ -3,8 +3,11 @@ package com.burakoyke.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +55,21 @@ public class RestStudentController {
 											 ,@RequestParam(name = "studentLastName",required = false) String studentLastName
 											 ,@RequestParam(name = "studentNo",required = false) Integer studentNo) {
 		return studentService.getStudentWithParams(id,studentName,studentLastName,studentNo);
+	}
+	
+	@PostMapping(path = "/save")
+	public Student saveStudent(@RequestBody Student student) {
+		return studentService.saveStudent(student);
+	}
+	
+	@DeleteMapping(path = "/delete/id/{id}")
+	public Boolean deteleStudentById(@PathVariable(name = "id",required = true) Integer id) {
+		return studentService.deteleStudentById(id);
+	}
+	
+	@DeleteMapping(path = "/delete/student-no/{studentNo}")
+	public Boolean deteleStudentByStudentNo(@PathVariable(name = "studentNo",required = true) Integer studentNo) {
+		return studentService.deteleStudentByStudentNo(studentNo);
 	}
 
 }

@@ -92,4 +92,30 @@ public class StudentRepository {
 	    return result;
 	}
 
+	public Student saveStudent(Student student) {    
+	    studentList.add(student);
+	    return student;
+	}
+
+	public Boolean deteleStudentById(Integer id) {
+		for (Student student : studentList) {
+			if (id == student.getId()) {
+				studentList.remove(student);
+				break;
+			}
+		}
+		return true;
+	}
+
+	public Boolean deteleStudentByStudentNo(Integer studentNo) {
+		for (Student student : studentList) {
+			if (studentNo == student.getId()) {
+				studentList.remove(student);
+				break;
+			}
+		}
+		return true;
+	}
+
+
 }

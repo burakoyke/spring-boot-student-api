@@ -1,12 +1,14 @@
 package com.burakoyke.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.burakoyke.model.Student;
+import com.burakoyke.model.UpdateStudent;
 
 @Repository
 public class StudentRepository {
@@ -94,6 +96,7 @@ public class StudentRepository {
 
 	public Student saveStudent(Student student) {    
 	    studentList.add(student);
+	    sortStudentsById(studentList);			
 	    return student;
 	}
 
@@ -104,6 +107,7 @@ public class StudentRepository {
 				break;
 			}
 		}
+		sortStudentsById(studentList);			
 		return true;
 	}
 
@@ -114,8 +118,24 @@ public class StudentRepository {
 				break;
 			}
 		}
+		sortStudentsById(studentList);			
 		return true;
 	}
 
-
+	public Boolean updateStudentById(Integer id, UpdateStudent updateStudent) {
+		
+		Boolean deleteStatus = deteleStudentById(id);
+		
+		Student student = new Student(id, updateStudent.getStudentName(),updateStudent.getStudentLastName(), updateStudent.getStudentNo());
+		
+		studentList.add(student);
+		
+			
+		
+		return true;
+	}
+	
+	public void sortStudentsById(List<Student> studentList) {
+	    Collections.sort(studentList, (s1, s2) -> Integer.compare(s1.getId(), s2.getId()));
+	}
 }

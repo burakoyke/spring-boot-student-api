@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.burakoyke.model.Student;
+import com.burakoyke.model.UpdateStudent;
 import com.burakoyke.repository.StudentRepository;
 
 @Service
@@ -53,6 +54,11 @@ public class StudentService {
 	public Boolean deteleStudentByStudentNo(Integer studentNo) {
 		// TODO Auto-generated method stub
 		return studentRepository.deteleStudentByStudentNo(studentNo);
+	}
+
+	public Boolean updateStudentById(Integer id, UpdateStudent updateStudent) {
+		// TODO Auto-generated method stub
+		return studentRepository.updateStudentById(id,updateStudent);
 	}
 
 	

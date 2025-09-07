@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.burakoyke.model.Student;
+import com.burakoyke.model.UpdateStudent;
 import com.burakoyke.services.StudentService;
 
 @RestController
@@ -70,6 +72,12 @@ public class RestStudentController {
 	@DeleteMapping(path = "/delete/student-no/{studentNo}")
 	public Boolean deteleStudentByStudentNo(@PathVariable(name = "studentNo",required = true) Integer studentNo) {
 		return studentService.deteleStudentByStudentNo(studentNo);
+	}
+	
+	@PutMapping(path = "/update/id/{id}")
+	public Boolean updateStudentById(@PathVariable (name = "id",required = true) Integer id, @RequestBody UpdateStudent updateStudent) {
+		
+		return studentService.updateStudentById(id,updateStudent);
 	}
 
 }
